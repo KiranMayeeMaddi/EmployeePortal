@@ -15,17 +15,32 @@ myapp.controller('getController', function($scope, $http)
     });
 });
 
-myapp.controller('postController',function($scope,$http){
+myapp.controller('postController',function($scope, $http, $timeout){
+
+    $scope.successMsg = true;
+    $scope.errorMsg = true;
     $scope.insertData = function(){
-        $http.post('http://127.0.0.1:3000/api/employees', JSON.stringify($scope.employee)).then(function (response) {
+        $http.post('http://127.0.0.1:3000/api/employees', JSON.stringify($scope.employee)).then(function (response){
         if (response.data)
             $scope.msg = "Post Data Submitted Successfully!";
+            $scope.successMsg = false;
+            $timeout(function() {
+              $scope.successMsg = true;
+            }, 4000);
         }, function (response) {
             $scope.msg = "Service not Exists";
             $scope.statusval = response.status;
             $scope.statustext = response.statusText;
             $scope.headers = response.headers();
             console.log("One of the fields is in incorrect format");
-        });
+            $scope.errorMsg = false;
+            $timeout(function() {
+              $scope.errorMsg = true;
+            }, 4000);
+        })
+        $scope.employee.firstName = '';
+        $scope.employee.lastName = '';
+        $scope.employee.hireDate = '';
+        $scope.employee.role = '';
     };
 });

@@ -10,17 +10,18 @@
   <body ng-controller="postController">
       <h1> New Employee </h1>
 
-      <form ng-submit="insertData()" >
+      <form name="newEmployee" ng-submit="insertData()" >
         <label> First Name </label><br>
-        <input type="text" id="t1" placeholder="First Name" ng-model="employee.firstName"/> <br>
+        <input type="text" id="text1" placeholder="First Name" ng-model="employee.firstName" required/><br>
         <label> Last Name </label><br>
-        <input type="text" id="t2" placeholder="Last Name" ng-model="employee.lastName" /> <br>
+        <input type="text" id="text2" placeholder="Last Name" ng-model="employee.lastName" required/> <br>
         <label> Hire Date </label><br>
-        <input type="text" id="t3" placeholder="Hire Date" ng-model="employee.hireDate" /> <br>
+        <input type="text" id="text3" placeholder="Hire Date" ng-model="employee.hireDate" required/> <br>
         <label> Role </label><br>
-        <input type="text"  id="t4" placeholder="Role" ng-model="employee.role" /> <br>
-         <button> Add Employee </button> <br>       
+        <input type="text"  id="text4" placeholder="Role" ng-model="employee.role" required/> <br>
+        <button>  Add Employee </button> <br><br>
+        <div ng-hide="successMsg">Submitted Successfully!</div>
+        <div ng-hide="errorMsg">Re-enter! Check the format of the fields!</div>
       </form>
-
   </body>
 </html>

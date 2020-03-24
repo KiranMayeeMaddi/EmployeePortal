@@ -18,8 +18,6 @@ var externalApis = {
 router.get('/', function(req, res){
     /*res.json(obj);
     res.end();*/
-    /*res.render('../userInterface/homepage/index');*/
-
     return res.send(obj);
 });
 
