@@ -8,7 +8,6 @@ function validateData(body){
       throw "Lastname type is not valid.";
     };
     if(!validateHireDate(body.hireDate)) {
-      console.log("not correct format");
       throw "Hiredate is not in valid format or is a future date.";
     };
     if(!validateRole(body.role)) {
@@ -21,9 +20,9 @@ function validateName(name){
 }
 
 function validateHireDate(date){
-    var currentDate = new Date().toString().split("T")[0];
+    var currentDate = new Date().toISOString().slice(0,10);
     var regEx = /^\d{4}-\d{1,2}-\d{1,2}$/;
-    return date < currentDate && !(!(date.match(regEx)));
+    return Date.parse(date) < Date.parse(currentDate) && !(!(date.match(regEx)));
 }
 
 function validateRole(role){

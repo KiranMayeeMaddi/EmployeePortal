@@ -38,7 +38,7 @@ router.get('/:id', function(req, res){
 router.post('/', async function(req, res){
     var empId = helper.generateRandomId(obj);
 
-    //validation.validateData(req.body);
+    validation.validateData(req.body);
     obj[empId] = req.body;
     //externalPostAPI.callExternalAPIs(obj, empId);
 
@@ -54,7 +54,7 @@ router.post('/', async function(req, res){
 router.put('/:id', function(req, res){
     var changeEmployeeDetails = req.params.id;
     if(changeEmployeeDetails in obj) {
-      //validation.validateData(req.body);
+      validation.validateData(req.body);
       obj[changeEmployeeDetails] = req.body;
       res.send('Employee id ' +changeEmployeeDetails+  ' is updated successfully!');
     } else {
