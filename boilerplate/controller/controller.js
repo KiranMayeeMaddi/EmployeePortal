@@ -11,12 +11,11 @@ myapp.controller('getController', function($scope, $http)
     var result = $http.get('http://127.0.0.1:3000/api/employees').then(function (d){
         $scope.records = d.data;
     },function (err){
-                console.log(err);
+        console.log(err);
     });
 });
 
 myapp.controller('postController',function($scope, $http, $timeout){
-
     $scope.successMsg = true;
     $scope.errorMsg = true;
     $scope.insertData = function(){
@@ -32,7 +31,6 @@ myapp.controller('postController',function($scope, $http, $timeout){
             $scope.statusval = response.status;
             $scope.statustext = response.statusText;
             $scope.headers = response.headers();
-            console.log("One of the fields is in incorrect format");
             $scope.errorMsg = false;
             $timeout(function() {
               $scope.errorMsg = true;

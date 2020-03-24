@@ -5,19 +5,11 @@ const externalPostAPI = require('../helper/postExternalAPI.js');
 const express = require('express');
 const router = express.Router();
 
-/*const DATABASE = {};*/
-const emp = '{"1": {"firstName": "Kiran", "lastName" : "Maddi", "role": "CEO", "hireDate": "2020-03-20"}, "2": {"firstName": "Maddi", "lastName": "Maddi", "role": "vp", "hireDate": "2020-03-19"}}';
-var obj = JSON.parse(emp);
-var externalApis = {
-  'quotesApi':  'https://ron-swanson-quotes.herokuapp.com/v2/quotes',
-  'jokesApi': 'http://api.icndb.com/jokes/random/'
-};
-
+const DATABASE = '{"1": {"firstName": "KiranMayee", "lastName" : "Maddi", "role": "CEO", "hireDate": "2020-03-20", "joke": "Corona virus is fictional"}, "quote": "Believe and think, everything will be yours."}';
+var obj = JSON.parse(DATABASE);
 
 /* GET employees listing. */
 router.get('/', function(req, res){
-    /*res.json(obj);
-    res.end();*/
     return res.send(obj);
 });
 

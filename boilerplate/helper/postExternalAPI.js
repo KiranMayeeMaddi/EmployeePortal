@@ -1,7 +1,6 @@
 'use strict';
 var request = require('request');
 
-
 var externalApis = {
   'quotesApi':  'https://ron-swanson-quotes.herokuapp.com/v2/quotes',
   'jokesApi': 'http://api.icndb.com/jokes/random/'
