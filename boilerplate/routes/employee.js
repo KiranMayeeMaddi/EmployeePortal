@@ -35,17 +35,11 @@ router.get('/:id', function(req, res){
 });
 
 /* POST employee data. */
-router.post('/', async function(req, res){
+router.post('/', function(req, res){
     var empId = helper.generateRandomId(obj);
-
     validation.validateData(req.body);
     obj[empId] = req.body;
-    //externalPostAPI.callExternalAPIs(obj, empId);
-
-    const joke = await externalPostAPI.getJoke(externalApis['jokesApi']);
-    const quote= await externalPostAPI.getQuote(externalApis['quotesApi']);
-    obj[empId]['joke']=joke;
-    obj[empId]['quote']=quote;
+    externalPostAPI.callExternalAPIs(obj, empId);
     res.send('Employee details are added successfully! Employee id is ' + empId+'.');
     res.end();
 });

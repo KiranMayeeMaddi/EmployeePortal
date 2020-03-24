@@ -2,19 +2,21 @@
 var request = require('request');
 
 
+var externalApis = {
+  'quotesApi':  'https://ron-swanson-quotes.herokuapp.com/v2/quotes',
+  'jokesApi': 'http://api.icndb.com/jokes/random/'
+};
 
-/*function callExternalAPIs(obj, empId) {
- for (var key in externalApis) {
-     var isJoke = key.includes('joke');
-     var keyName = isJoke ? 'joke': 'quote';
-     const tempString =  getJokeOrQuote(externalApis[key], isJoke);
-     obj[empId][keyName] = tempString;*
- }
+ function callExternalAPIs(obj, empId) {
+   getJokeOrQuote(externalApis['quotesApi'], false, function(res) {
+     obj[empId]['quote'] = res;
+   });
+   getJokeOrQuote(externalApis['jokesApi'], true, function(res) {
+     obj[empId]['joke'] = res;
+   });
 }
 
-function getJokeOrQuote(api, isJoke){
-  var jsonBody;
-
+function getJokeOrQuote(api, isJoke, callback){
   request(api, function (error, response, body) {
           if (error) {
               return console.log('Error:', error);
@@ -22,57 +24,18 @@ function getJokeOrQuote(api, isJoke){
           if (response.statusCode !== 200) {
               return console.log('Invalid Status Code Returned:', response.statusCode);
           }
-          jsonBody = JSON.parse(body);
+          var jsonBody = JSON.parse(body);
+          return callback(isJoke ? parseJoke(jsonBody) : parseQuote(jsonBody));
       })
-   return isJoke ? parseJoke(jsonBody) : parseQuote(jsonBody);
 }
 
 function parseJoke(jsonBody){
     return jsonBody.value.joke;
-}*/
-function getJoke(api){
-let joke;
-return new Promise( function (resolve, reject){
-        request(api, function (error, response, body) {
-            if (error) {
-                return console.log('Error:', error);
-            }
-            if (!error && response.statusCode !== 200) {
-                return console.log('Invalid Status Code Returned:', response.statusCode);
-            }
-            joke = JSON.parse(body).value.joke;
-            console.log("*** GET JOKE ***")
-            console.log(joke)
-            console.log("*** END JOKE ***")
-            resolve(joke);
-      }).end();
 }
-)}
-
-function getQuote(api){
-  let quote;
-  return new Promise( function(resolve, reject){
-        request(api, function (error, response, body) {
-          if (error) {
-              return console.log('Error:', error);
-          }
-          if (response.statusCode !== 200) {
-              return console.log('Invalid Status Code Returned:', response.statusCode);
-          }
-          quote = JSON.parse(body)[0];
-          console.log("*** GET QUOTE ***")
-          console.log(quote)
-          console.log("*** END QUOTE ***")
-          resolve(quote);
-      }).end();
-}
-)}
-
-/*function parseQuote(jsonBody) {
+function parseQuote(jsonBody) {
    return jsonBody[0];
-}*/
+}
 
 module.exports = {
-  getJoke,
-  getQuote
+  callExternalAPIs
 }
