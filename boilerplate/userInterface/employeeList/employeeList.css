@@ -1,0 +1,29 @@
+body {
+    background:url(../images/internalPageBg.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+h1{
+    font-size: 45px;
+    font-family: "Palatino";
+    text-align: center;
+}
+
+table {
+  border: 2px solid  #008CBA;
+  align: center;
+  font-family: "Helvetica";
+  font-size: 16px;
+  color: black;
+}
+
+th {
+    padding: 10px 10px 10px 10px;
+}
+
+td {
+  padding: 5px 5px 5px 5px;
+}
