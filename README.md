@@ -5,14 +5,6 @@
   - Show a list of the existing employees
   - Include a way to create a new employee using the POST API
 
-**Expected Time**
-
-This exercise is expected to take about 4-5 hours total, over the course of 2-3 days.
-
-**Submission Instructions**
-
-Post your solution to a public repository on [Github](https://github.com/). Send the repository URL back to the same person who sent you these instructions.
-
 **Additional Guidance**
 
 Persistent storage is not necessary, just use an in memory object to track employee records.
