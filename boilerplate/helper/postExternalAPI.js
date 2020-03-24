@@ -45,7 +45,6 @@ return new Promise( function (resolve, reject){
             console.log(joke)
             console.log("*** END JOKE ***")
             resolve(joke);
-            reject(new Error('Fail!'));
       }).end();
 }
 )}
@@ -65,7 +64,6 @@ function getQuote(api){
           console.log(quote)
           console.log("*** END QUOTE ***")
           resolve(quote);
-          reject(new Error('Fail!'));
       }).end();
 }
 )}
