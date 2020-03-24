@@ -12,9 +12,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/employees', employeeRoutes);
 
 
+/**
+ * app - Static files routing
+ */
+
 app.get('/', function(req,res) {
   res.sendFile(__dirname + '/userInterface/homepage/index.html');
 });
+
 app.get('/style.css', function(req,res) {
   res.sendFile(__dirname + '/userInterface/homepage/style.css');
 });
@@ -44,13 +49,9 @@ app.get('/employeeList.css', function(req,res) {
   res.sendFile(__dirname + '/userInterface/employeeList/employeeList.css');
 });
 
-
-// listen for requests
-/*app.listen(port, function() {
-    console.log(`Server is listening on port ${port}`);
-});*/
-
-// listen for requests
+/**
+* listen for requests
+*/
 app.listen(3000, '127.0.0.1', function() {
     console.log('Listening to port:  ' + 3000);
 });
