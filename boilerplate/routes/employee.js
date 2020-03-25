@@ -7,7 +7,7 @@ const express = require('express');
 
 /* Declaration */
 const router = express.Router();
-const DATABASE = '{"1": {"firstName": "KiranMayee", "lastName" : "Maddi", "role": "CEO", "hireDate": "2020-03-20", "joke": "Corona virus is fictional"}, "quote": "Believe and think, everything will be yours."}';
+const DATABASE = '{"1": {"firstName": "KiranMayee", "lastName" : "Maddi", "role": "CEO", "hireDate": "2020-03-20", "joke": "Corona virus is fictional", "quote": "Believe and think, everything will be yours."}}';
 var obj = JSON.parse(DATABASE);
 
 /* GET all employees.*/
